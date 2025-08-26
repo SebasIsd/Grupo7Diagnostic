@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades - Grupo 7</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">Tech Innovators</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="juego.html">Minijuego</a></li>
+                    <li><a href="conversor.html" class="active">Conversor</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="feature-section glass-effect">
+            <h2>Conversor de Temperatura</h2>
+            <p class="section-description">
+                Convierte fácilmente entre grados Celsius y Fahrenheit. Ingresa el valor y elige la unidad de origen.
+            </p>
+            <form id="converter-form">
+                <label for="temperature">Temperatura:</label>
+                <input type="number" id="temperature" required>
+                
+                <label for="unit">Unidad de origen:</label>
+                <select id="unit">
+                    <option value="celsius">Celsius (°C)</option>
+                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                </select>
+                
+                <button type="submit">Convertir</button>
+            </form>
+            <div id="result-conversion" class="result"></div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Tech Innovators. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="conversor.js"></script>
+</body>
+</html>

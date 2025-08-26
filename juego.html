@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego - Grupo 7</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">Tech Innovators</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="juego.html" class="active">Minijuego</a></li>
+                    <li><a href="conversor.html">Conversor</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="feature-section glass-effect">
+            <h2>Adivina el Número</h2>
+            <p class="section-description">
+                ¡Pon a prueba tu intuición! Intenta adivinar el número secreto entre 1 y 100. Tienes un número limitado de intentos.
+            </p>
+            <form id="game-form">
+                <label for="guess">Ingresa tu número:</label>
+                <input type="number" id="guess" min="1" max="100" required>
+                <button type="submit">Adivinar</button>
+            </form>
+            <div id="result-message" class="result"></div>
+            <p id="remaining-guesses" class="info-message"></p>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Tech Innovators. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="juego.js"></script>
+</body>
+</html>

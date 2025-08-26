@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Propinas - Grupo 7</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">Tech Innovators</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="juego.html">Minijuego</a></li>
+                    <li><a href="conversor.html">Conversor</a></li>
+                    <li><a href="calculadora.html" class="active">Calculadora</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="feature-section glass-effect">
+            <h2>Calculadora de Propinas</h2>
+            <p class="section-description">
+                Una herramienta práctica para calcular la propina y el total de tu cuenta de forma rápida y sencilla.
+            </p>
+            <form id="tip-calculator-form">
+                <label for="bill-amount">Monto de la cuenta ($):</label>
+                <input type="number" id="bill-amount" step="0.01" required>
+                
+                <label for="tip-percentage">Porcentaje de propina (%):</label>
+                <input type="number" id="tip-percentage" min="0" max="100" required>
+                
+                <button type="submit">Calcular</button>
+            </form>
+            <div id="tip-result" class="result"></div>
+            <div id="total-result" class="result"></div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Tech Innovators. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="calculadora.js"></script>
+</body>
+</html>

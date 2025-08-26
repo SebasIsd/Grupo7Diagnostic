@@ -1,0 +1,271 @@
+/* Variables y estilos generales */
+:root {
+    --primary-color: #4B0082; /* Púrpura elegante */
+    --secondary-color: #8A2BE2; /* Violeta */
+    --accent-color: #FFD700; /* Dorado para acentos */
+    --background-start: #ECE9F4; /* Gradiente de fondo claro */
+    --background-end: #D4C9E7;
+    --card-bg-color: rgba(255, 255, 255, 0.5); /* Fondo de tarjeta semitransparente */
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--background-start), var(--background-end));
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado */
+.main-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Sección de Héroe */
+.hero-section {
+    background-color: var(--card-bg-color);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: var(--border-radius);
+    margin-top: 30px;
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(10px);
+}
+
+.hero-content h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.project-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.cta-button i {
+    margin-right: 8px;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección del Equipo */
+.team-section {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-effect {
+    background-color: var(--card-bg-color);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.member-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 5px solid var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.member-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+.member-bio {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Pie de página */
+.main-footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las otras páginas (para consistencia) */
+.feature-section {
+    background-color: var(--card-bg-color);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-top: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.feature-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.feature-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.feature-section label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.feature-section input, .feature-section select, .feature-section button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.feature-section button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.feature-section button:hover {
+    background-color: #6A1B9A;
+}
+
+.result {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
