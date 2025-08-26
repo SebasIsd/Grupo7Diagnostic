@@ -1,47 +1,141 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('game-form');
-    const guessInput = document.getElementById('guess');
-    const resultMessage = document.getElementById('result-message');
-    const remainingGuesses = document.getElementById('remaining-guesses');
+    // Definimos las cartas que se utilizarán en el juego
+    // Cada carta tiene un nombre y una URL de imagen o una clase de ícono (ej. Font Awesome)
+    const cardsArray = [
+        { name: 'bomb', icon: 'fas fa-bomb' },
+        { name: 'bolt', icon: 'fas fa-bolt' },
+        { name: 'cloud', icon: 'fas fa-cloud' },
+        { name: 'coffee', icon: 'fas fa-mug-hot' },
+        { name: 'heart', icon: 'fas fa-heart' },
+        { name: 'star', icon: 'fas fa-star' },
+        { name: 'music', icon: 'fas fa-music' },
+        { name: 'moon', icon: 'fas fa-moon' },
+    ];
+
+    // Duplicamos el array para tener pares de cartas
+    const gameCards = [...cardsArray, ...cardsArray];
+
+    const gameContainer = document.getElementById('memory-game');
+    const gameStatus = document.getElementById('game-status');
     
-    let secretNumber = Math.floor(Math.random() * 100) + 1;
-    let guessesLeft = 10;
+    let hasFlippedCard = false;
+    let lockBoard = false;
+    let firstCard, secondCard;
+    let matchesFound = 0;
 
-    remainingGuesses.textContent = `Intentos restantes: ${guessesLeft}`;
+    /**
+     * @function shuffleCards
+     * @description Mezcla aleatoriamente el array de cartas.
+     * @param {Array} array - El array de cartas a mezclar.
+     */
+    function shuffleCards(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    /**
+     * @function createBoard
+     * @description Genera dinámicamente el tablero del juego a partir del array de cartas.
+     */
+    function createBoard() {
+        shuffleCards(gameCards);
+        gameCards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('card');
+            cardElement.dataset.name = card.name;
+            
+            // Cara frontal de la carta
+            const frontFace = document.createElement('div');
+            frontFace.classList.add('front-face');
+            const frontIcon = document.createElement('i');
+            frontIcon.className = card.icon;
+            frontFace.appendChild(frontIcon);
+
+            // Cara trasera de la carta
+            const backFace = document.createElement('div');
+            backFace.classList.add('back-face');
+            backFace.innerHTML = `<i class="fas fa-question"></i>`;
+            
+            cardElement.appendChild(frontFace);
+            cardElement.appendChild(backFace);
+            
+            cardElement.addEventListener('click', flipCard);
+            gameContainer.appendChild(cardElement);
+        });
+    }
+
+    /**
+     * @function flipCard
+     * @description Maneja la lógica de voltear una carta al hacer clic.
+     */
+    function flipCard() {
+        if (lockBoard) return;
+        if (this === firstCard) return;
+
+        this.classList.add('flip');
+
+        if (!hasFlippedCard) {
+            // Primera carta volteada
+            hasFlippedCard = true;
+            firstCard = this;
+            return;
+        }
+
+        // Segunda carta volteada
+        secondCard = this;
+        checkForMatch();
+    }
+
+    /**
+     * @function checkForMatch
+     * @description Comprueba si las dos cartas volteadas coinciden.
+     */
+    function checkForMatch() {
+        const isMatch = firstCard.dataset.name === secondCard.dataset.name;
+        isMatch ? disableCards() : unflipCards();
+    }
+
+    /**
+     * @function disableCards
+     * @description Desactiva las cartas que coinciden, evitando que se vuelvan a voltear.
+     */
+    function disableCards() {
+        firstCard.removeEventListener('click', flipCard);
+        secondCard.removeEventListener('click', flipCard);
         
-        if (guessesLeft === 0) {
-            resultMessage.textContent = '¡Se acabaron los intentos! El número era ' + secretNumber;
-            resultMessage.style.color = '#D32F2F'; // Rojo
-            guessInput.disabled = true;
-            return;
+        matchesFound++;
+        if (matchesFound === cardsArray.length) {
+            // Condición de victoria
+            gameStatus.textContent = '¡Felicidades, has encontrado todos los pares!';
         }
 
-        const userGuess = parseInt(guessInput.value);
+        resetBoard();
+    }
 
-        if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
-            resultMessage.textContent = 'Por favor, ingresa un número válido entre 1 y 100.';
-            resultMessage.style.color = '#FFC107'; // Amarillo
-            return;
-        }
+    /**
+     * @function unflipCards
+     * @description Voltea las cartas si no coinciden.
+     */
+    function unflipCards() {
+        lockBoard = true;
+        setTimeout(() => {
+            firstCard.classList.remove('flip');
+            secondCard.classList.remove('flip');
+            resetBoard();
+        }, 1000);
+    }
 
-        guessesLeft--;
-
-        if (userGuess === secretNumber) {
-            resultMessage.textContent = `¡Felicidades! Adivinaste el número en ${10 - guessesLeft} intentos.`;
-            resultMessage.style.color = '#4CAF50'; // Verde
-            guessInput.disabled = true;
-        } else if (userGuess < secretNumber) {
-            resultMessage.textContent = 'Muy bajo. Intenta con un número más alto.';
-            resultMessage.style.color = '#2196F3'; // Azul
-        } else {
-            resultMessage.textContent = 'Muy alto. Intenta con un número más bajo.';
-            resultMessage.style.color = '#2196F3'; // Azul
-        }
-
-        remainingGuesses.textContent = `Intentos restantes: ${guessesLeft}`;
-        guessInput.value = '';
-    });
+    /**
+     * @function resetBoard
+     * @description Reinicia las variables del tablero para el próximo turno.
+     */
+    function resetBoard() {
+        [hasFlippedCard, lockBoard] = [false, false];
+        [firstCard, secondCard] = [null, null];
+    }
+    
+    // Inicia el juego
+    createBoard();
 });
