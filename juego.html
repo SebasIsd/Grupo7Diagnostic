@@ -12,12 +12,14 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="container">
-            <h1 class="logo">SvJ Tech</h1>
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="includes/logo2.png" alt="Logo de SvJ Tech" class="logo-img">
+            </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="juego.html" class="active">Minijuego</a></li>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="juego.html">Minijuego</a></li>
                     <li><a href="conversor.html">Conversor</a></li>
                     <li><a href="calculadora.html">Calculadora</a></li>
                 </ul>
@@ -31,12 +33,29 @@
             <p class="section-description">
                 Voltea las cartas para encontrar los pares. ¡Encuéntralos todos para ganar!
             </p>
+            
+            <div class="controls-container">
+                <div class="difficulty-control">
+                    <label for="difficulty-select">Dificultad:</label>
+                    <select id="difficulty-select">
+                        <option value="easy">Fácil (4 pares)</option>
+                        <option value="medium">Medio (6 pares)</option>
+                        <option value="hard">Difícil (8 pares)</option>
+                    </select>
+                </div>
+                <button id="start-button" class="action-button">Iniciar Juego</button>
+                <button id="reset-button" class="action-button" style="display: none;">Reiniciar</button>
+            </div>
+            
             <div class="memory-game" id="memory-game">
                 <!-- Las tarjetas se generarán con JavaScript -->
             </div>
             <div id="game-status" class="result"></div>
+            <button id="restart-button" class="action-button" style="display: none;">Volver a Jugar</button>
         </section>
     </main>
+
+    <br><hr>
 
     <footer class="main-footer">
         <div class="container">
