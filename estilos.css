@@ -1,7 +1,7 @@
 /* Variables y estilos generales */
 :root {
-    --primary-color: #056724; /* Púrpura elegante */
-    --secondary-color: #2be250; /* Violeta */
+    --primary-color: #056724; 
+    --secondary-color: #099134; 
     --accent-color: #FFD700; /* Dorado para acentos */
     --background-start: #ECE9F4; /* Gradiente de fondo claro */
     --background-end: #D4C9E7;
