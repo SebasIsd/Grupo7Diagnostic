@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ahorcado - SvJ Tech</title>
+    <!-- Incluye el nuevo archivo CSS para el juego -->
+    <link rel="stylesheet" href="ahorcado.css">
+    <!-- Mantenemos el archivo de estilos generales para el diseño del sitio -->
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="parallax-bg"></div>
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-link">
+                <img src="includes/logo1.png" alt="Logo de SvJ Tech" class="logo-img">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="juego.html">Minijuego</a></li>
+                    <li><a href="conversor.html">Conversor</a></li>
+                    <li><a href="ahorcado.html" class="active">Ahorcado</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="feature-section glass-effect">
+            <h2>Juego del Ahorcado</h2>
+            <p class="section-description">
+                Adivina la palabra oculta antes de que se complete el dibujo.
+            </p>
+            <div id="game-container">
+                <!-- Contenedor del dibujo del ahorcado -->
+                <div id="hangman-drawing">
+                    <div class="gallows"></div>
+                    <div class="gallows-rope"></div>
+                    <div id="hangman-head" class="hangman-part"></div>
+                    <div id="hangman-body" class="hangman-part"></div>
+                    <div id="hangman-left-arm" class="hangman-part"></div>
+                    <div id="hangman-right-arm" class="hangman-part"></div>
+                    <div id="hangman-left-leg" class="hangman-part"></div>
+                    <div id="hangman-right-leg" class="hangman-part"></div>
+                </div>
+
+                <div id="word-display" class="result"></div>
+                <div id="guesses">
+                    <p>Letras incorrectas: <span id="wrong-letters"></span></p>
+                    <p>Intentos restantes: <span id="remaining-guesses">6</span></p>
+                </div>
+                <div id="keyboard" class="keyboard-container">
+                    <!-- Botones de teclado se generarán con JavaScript -->
+                </div>
+                <div id="game-status" class="info-message"></div>
+                <button id="restart-button" class="action-button" style="display: none;">Volver a Jugar</button>
+            </div>
+        </section>
+    </main>
+
+    <br><hr>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 SvJ Tech. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="ahorcado.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+/* Estilos específicos para el juego del ahorcado */
+
+/* Estilos para el contenedor del juego */
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Contenedor del dibujo del ahorcado */
+#hangman-drawing {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+/* La horca */
+.gallows, .gallows::before, .gallows::after {
+    background-color: var(--text-color);
+}
+
+.gallows {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 150px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.gallows::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 10px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.gallows::after {
+    content: '';
+    position: absolute;
+    bottom: 200px;
+    left: 20px;
+    width: 100px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* La cuerda del ahorcado */
+.gallows-rope {
+    position: absolute;
+    top: 55px;
+    right: 120px;
+    width: 2px;
+    height: 35px;
+    background-color: var(--text-color);
+}
+
+/* Partes del cuerpo del ahorcado (inicialmente ocultas) */
+.hangman-part {
+    position: absolute;
+    display: none;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* La cabeza */
+#hangman-head {
+    width: 40px;
+    height: 40px;
+    top: 90px;
+    right: 100px;
+    border: 2px solid var(--text-color);
+}
+
+/* El cuerpo */
+#hangman-body {
+    width: 2px;
+    height: 60px;
+    top: 130px;
+    right: 119px;
+    border-radius: 0;
+}
+
+/* Los brazos */
+#hangman-left-arm {
+    width: 2px;
+    height: 40px;
+    top: 140px;
+    right: 139px;
+    transform: rotate(45deg);
+    border-radius: 0;
+}
+
+#hangman-right-arm {
+    width: 2px;
+    height: 40px;
+    top: 140px;
+    right: 99px;
+    transform: rotate(-45deg);
+    border-radius: 0;
+}
+
+/* Las piernas */
+#hangman-left-leg {
+    width: 2px;
+    height: 50px;
+    top: 190px;
+    right: 139px;
+    transform: rotate(-45deg);
+    border-radius: 0;
+}
+
+#hangman-right-leg {
+    width: 2px;
+    height: 50px;
+    top: 190px;
+    right: 99px;
+    transform: rotate(45deg);
+    border-radius: 0;
+}
+
+/* Las partes del cuerpo se muestran cuando se añaden las clases correspondientes */
+.show-head { display: block; transform: scale(1); }
+.show-body { display: block; transform: scale(1); }
+.show-left-arm { display: block; transform: scale(1) rotate(45deg); }
+.show-right-arm { display: block; transform: scale(1) rotate(-45deg); }
+.show-left-leg { display: block; transform: scale(1) rotate(-45deg); }
+.show-right-leg { display: block; transform: scale(1) rotate(45deg); }
+
+/* Estilos de la palabra y el estado */
+#word-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.result, .info-message {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Estilos del teclado virtual */
+.keyboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.keyboard-button {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.keyboard-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
