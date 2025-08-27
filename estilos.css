@@ -288,7 +288,7 @@ main {
 }
 
 .feature-section button:hover {
-    background-color: #6A1B9A;
+    background-color: #2be250;
 }
 
 .result {
@@ -348,7 +348,7 @@ main {
 }
 
 .action-button:hover {
-    background-color: #6A1B9A;
+    background-color: #2be250;
 }
 
 /* Estilos específicos para el juego de memoria */

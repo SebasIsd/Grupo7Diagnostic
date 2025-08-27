@@ -137,13 +137,12 @@
 
 /* Estilos de la palabra y el estado */
 #word-display {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 5px;
-    margin: 20px 0;
-    text-align: center;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    letter-spacing: clamp(2px, 1vw, 5px);
+    margin: 15px 0;
+    word-break: break-word;
+    padding: 0 10px;
 }
-
 .result, .info-message {
     font-size: 1.2rem;
     font-weight: 600;
@@ -151,28 +150,90 @@
 }
 
 /* Estilos del teclado virtual */
+/* Estilos del teclado virtual - MEJORADO PARA RESPONSIVIDAD */
 .keyboard-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    gap: 6px;
     width: 100%;
     max-width: 600px;
     margin-top: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .keyboard-button {
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 2.5vw, 1.1rem); /* Tamaño responsive */
     text-transform: uppercase;
     font-weight: 600;
-    padding: 10px;
-    border-radius: 8px;
+    padding: clamp(6px, 2vw, 10px); /* Padding responsive */
+    border-radius: 6px;
     cursor: pointer;
     border: none;
     transition: transform 0.2s, box-shadow 0.2s;
+    aspect-ratio: 1/1; /* Mantiene forma cuadrada */
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Contenedor para organizar las letras como un teclado real */
+.keyboard-wrapper {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 6px;
+    width: 100%;
+}
+
+/* Ajustes para tablets */
+@media (max-width: 900px) {
+    .keyboard-wrapper {
+        grid-template-columns: repeat(10, 1fr);
+    }
+}
+
+/* Ajustes para móviles grandes */
+@media (max-width: 650px) {
+    .keyboard-wrapper {
+        grid-template-columns: repeat(8, 1fr);
+    }
+    
+    .keyboard-button {
+        min-height: 30px;
+    }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+    .keyboard-wrapper {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+    }
+    
+    .keyboard-button {
+        min-height: 28px;
+        font-size: 0.75rem;
+        padding: 5px;
+    }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 350px) {
+    .keyboard-wrapper {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .keyboard-button {
+        min-height: 26px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Mejora visual para el estado deshabilitado */
 .keyboard-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
     box-shadow: none;
+    transform: scale(0.95);
 }
